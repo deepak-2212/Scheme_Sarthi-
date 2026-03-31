@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SchemeSaathi &mdash; Your Scheme Finding Saathi</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700&family=Noto+Sans:wght@400;500&family=JetBrains+Mono:wght@400;500&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+  <!-- ─── HEADER ─────────────────────────────────────────────── -->
+  <header class="header">
+    <div class="header-brand">
+      <!-- Hamburger toggle -->
+      <button class="hamburger-btn" id="sidebar-toggle" onclick="toggleSidebar()" title="Toggle sidebar">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/>
+        </svg>
+      </button>
+      <div class="brand-icon">&#127963;&#65039;</div>
+      <div>
+        <div class="brand-name">Scheme<span>Saathi</span></div>
+        <div class="brand-tagline" data-i18n="tagline">YOUR SCHEME FINDING SAATHI</div>
+      </div>
+    </div>
+
+    <div class="header-controls">
+      <!-- Theme Toggle -->
+      <button class="icon-action-btn" id="theme-toggle" onclick="toggleTheme()" title="Toggle Dark/Light Mode">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+      </button>
+
+      <!-- Language switcher -->
+      <div class="lang-dropdown">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" fill="currentColor" class="lang-icon"><path d="M12.87 15.07l-2.54-2.51.03-.03A17.52 17.52 0 0014.07 6H17V4h-7V2H8v2H1v2h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11.76-2.04zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2l-4.5-12zm-2.62 7l1.62-4.33L19.12 17h-3.24z"/></svg>
+        <select class="lang-select" onchange="setLangFromSelect(this)">
+          <option value="en">English</option>
+          <option value="hi">&#2361;&#2367;&#2306;&#2342;&#2368;</option>
+          <option value="ta">&#2980;&#2990;&#3007;&#2996;&#3021;</option>
+          <option value="te">&#3108;&#3142;&#3122;&#3137;&#3095;&#3137;</option>
+          <option value="bn">&#2476;&#2494;&#2434;&#2482;&#2494;</option>
+          <option value="mr">&#2350;&#2352;&#2366;&#2336;&#2368;</option>
+        </select>
+      </div>
+
+      <!-- Notification Bell -->
+      <button class="icon-action-btn" title="Notifications">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M13.73 21a2 2 0 0 1-3.46 0"></path></svg>
+      </button>
+
+
+    </div>
+  </header>
+
+  <!-- ─── MAIN BODY ───────────────────────────────────────────── -->
+  <div class="app-body">
+
+    <!-- ─── SIDEBAR ─────────────────────────────────────────── -->
+    <aside class="sidebar" id="main-sidebar">
+
+      <!-- Top: New Chat -->
+      <div class="sidebar-top">
+        <button class="sidebar-new-chat" onclick="clearChat()" title="Start a new conversation">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          <span data-i18n="new_chat">New Chat</span>
+        </button>
+      </div>
+
+      <!-- Middle: scrollable profile + scheme results -->
+      <div class="sidebar-middle">
+
+        <!-- Profile Form -->
+        <details class="sidebar-details" open>
+          <summary class="sidebar-title">
+            <div class="summary-inner">
+              <span data-i18n="detected_profile">Detected Profile</span>
+              <svg class="toggle-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </div>
+          </summary>
+          <form class="profile-form" id="profile-form" onsubmit="submitProfileForm(event)">
+
+            <div class="profile-field">
+              <label class="profile-field-label" for="f-age" data-i18n="age">Age</label>
+              <input class="profile-field-input" id="f-age" type="number" min="1" max="120"
+                data-i18n-placeholder="age_placeholder" placeholder="e.g. 35" />
+            </div>
+
+            <div class="profile-field">
+              <label class="profile-field-label" for="f-gender" data-i18n="gender">Gender</label>
+              <select class="profile-field-input" id="f-gender">
+                <option value="" data-i18n="select">Select...</option>
+                <option value="male" data-i18n="male">Male</option>
+                <option value="female" data-i18n="female">Female</option>
+                <option value="other" data-i18n="other">Other</option>
+              </select>
+            </div>
+
+            <div class="profile-field">
+              <label class="profile-field-label" for="f-state" data-i18n="state">State</label>
+              <select class="profile-field-input" id="f-state">
+                <option value="" data-i18n="select">Select...</option>
+                <option>Andhra Pradesh</option><option>Arunachal Pradesh</option>
+                <option>Assam</option><option>Bihar</option><option>Chhattisgarh</option>
+                <option>Goa</option><option>Gujarat</option><option>Haryana</option>
+                <option>Himachal Pradesh</option><option>Jharkhand</option>
+                <option>Karnataka</option><option>Kerala</option>
+                <option>Madhya Pradesh</option><option>Maharashtra</option>
+                <option>Manipur</option><option>Meghalaya</option><option>Mizoram</option>
+                <option>Nagaland</option><option>Odisha</option><option>Punjab</option>
+                <option>Rajasthan</option><option>Sikkim</option><option>Tamil Nadu</option>
+                <option>Telangana</option><option>Tripura</option>
+                <option>Uttar Pradesh</option><option>Uttarakhand</option>
+                <option>West Bengal</option><option>Delhi</option>
+              </select>
+            </div>
+
+            <div class="profile-field">
+              <label class="profile-field-label" for="f-occ" data-i18n="occupation">Occupation</label>
+              <select class="profile-field-input" id="f-occ">
+                <option value="" data-i18n="select">Select...</option>
+                <option value="farmer" data-i18n="occ_farmer">Farmer</option>
+                <option value="self-employed" data-i18n="occ_self">Self-Employed</option>
+                <option value="salaried" data-i18n="occ_salaried">Salaried Employee</option>
+                <option value="student" data-i18n="occ_student">Student</option>
+                <option value="unemployed" data-i18n="occ_unemployed">Unemployed</option>
+                <option value="daily-wage" data-i18n="occ_daily">Daily Wage Worker</option>
+                <option value="business" data-i18n="occ_business">Business Owner</option>
+                <option value="other" data-i18n="other">Other</option>
+              </select>
+            </div>
+
+            <div class="profile-field">
+              <label class="profile-field-label" for="f-income" data-i18n="annual_income">Annual Income (&#8377;)</label>
+              <input class="profile-field-input" id="f-income" type="number" min="0"
+                data-i18n-placeholder="income_placeholder" placeholder="e.g. 70000" />
+            </div>
+
+            <div class="profile-field">
+              <label class="profile-field-label" for="f-res" data-i18n="residence">Residence</label>
+              <select class="profile-field-input" id="f-res">
+                <option value="" data-i18n="select">Select...</option>
+                <option value="rural" data-i18n="res_rural">Rural</option>
+                <option value="urban" data-i18n="res_urban">Urban</option>
+                <option value="semi-urban" data-i18n="res_semi">Semi-Urban</option>
+              </select>
+            </div>
+
+            <button type="submit" class="profile-submit-btn">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+              <span data-i18n="find_schemes">Find Schemes</span>
+            </button>
+
+          </form>
+        </details>
+
+        <!-- Missing data alerts -->
+        <div class="missing-alerts" id="missing-alerts" style="display:none;">
+          <!-- populated by script.js -->
+        </div>
+
+        <!-- Scheme results panel -->
+        <div class="scheme-results" id="scheme-results">
+          <div class="no-results">
+            <div class="no-results-icon">&#128203;</div>
+            <span data-i18n="no_results">Tell me about yourself and I'll find matching government schemes for you.</span>
+          </div>
+        </div>
+
+      </div><!-- end .sidebar-middle -->
+
+      <!-- Bottom: Settings -->
+      <div class="sidebar-bottom">
+        <button class="sidebar-settings" title="Settings">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+          <span data-i18n="settings">Settings</span>
+        </button>
+      </div>
+
+    </aside>
+
+    <!-- ─── CHAT AREA ────────────────────────────────────────── -->
+    <main class="chat-area">
+
+      <!-- Messages container -->
+      <div class="chat-messages" id="chat-messages">
+        <!-- Welcome screen -->
+        <div class="welcome-screen" id="welcome-screen">
+          <div class="welcome-icon">&#129309;</div>
+          <div class="welcome-title" data-i18n="welcome">Namaste! I'm <span>SchemeSaathi</span></div>
+        </div>
+
+      </div><!-- end #chat-messages -->
+
+      <!-- ─── INPUT AREA ────────────────────────────────────── -->
+      <div class="input-area">
+
+        <div class="input-row">
+          <div class="input-wrapper">
+            <textarea id="chat-input" data-i18n-placeholder="placeholder"
+              placeholder="Tell me about yourself &mdash; age, occupation, income, state... (any language)" rows="1"
+              oninput="autoResize(this)"
+              onkeydown="handleKeydown(event)"></textarea>
+
+          </div>
+          <button class="send-btn" id="send-btn" onclick="sendMessage()" title="Send message">&#10148;</button>
+        </div>
+
+        <div class="input-footer">
+          <span class="input-hints" data-i18n="input_hints">Enter &#8629; to send &nbsp;&middot;&nbsp; Shift+Enter for new line</span>
+        </div>
+
+      </div><!-- end .input-area -->
+
+    </main><!-- end .chat-area -->
+
+  </div><!-- end .app-body -->
+
+  <script src="translations.js"></script>
+  <script src="script.js"></script>
+</body>
+
+</html>
