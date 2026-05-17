@@ -1,10 +1,10 @@
-# 🚀 SchemeSaathi — AI-Powered Government Scheme Assistant
+# 🚀 SchemeSarthi — AI-Powered Government Scheme Assistant
 
 ## 📌 Overview
 
-**SchemeSaathi** is an intelligent AI-based assistant that helps users discover relevant government schemes in India using natural language.
+**SchemeSarthi** is an intelligent AI-based assistant that helps users discover relevant government schemes in India using natural language.
 
-Unlike traditional search systems, SchemeSaathi understands user queries in **English, Hindi, Marathi, Hinglish, and Minglish**, extracts user information, and provides **personalized scheme recommendations**.
+Unlike traditional search systems, SchemeSarthi understands user queries in **English, Hindi, Marathi, Hinglish, and Minglish**, extracts user information, and provides **personalized scheme recommendations**.
 
 ---
 
@@ -169,7 +169,7 @@ SARVAM_MODEL=sarvam-m
 
 ## 🎬 Conclusion
 
-SchemeSaathi bridges the gap between citizens and government benefits by transforming **complex information into simple, personalized, multilingual insights**.
+SchemeSarthi bridges the gap between citizens and government benefits by transforming **complex information into simple, personalized, multilingual insights**.
 
 ---
 
